@@ -1,0 +1,25 @@
+import java.util.Scanner;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int a,b=0,c;
+        
+        int x=sc.nextInt();
+        while(x!=0)
+        {
+            a=x%10;
+            if(a==4)
+            {
+                b++;
+            }
+            x=x/10;
+        }
+      if(b>0)
+      System.out.println(b);
+      else
+      System.out.println(b);
+    
+    }
+}
