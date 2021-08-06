@@ -1,0 +1,27 @@
+import java.util.Scanner;
+class Main
+{
+    public static void main(String ar[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        if(n<15000)
+        {
+            
+        
+        float hra=(float)n*(float)0.15;
+        float da=(float)n*(float)0.9;
+        float gross=hra+da+n;
+        System.out.println(String.format("%.2f",gross));
+        }
+        else
+        {
+           float hra=5000;
+        float da=(float)n*(float)0.98;
+        float gross=hra+da+n;
+        System.out.println(String.format("%.2f",gross));
+        }
+        
+        
+    }
+}
