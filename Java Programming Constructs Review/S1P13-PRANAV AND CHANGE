@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner scan = new Scanner(System.in);
+        int num = scan.nextInt();
+        int minCount = 0;
+        do{
+            minCount += num/100;
+            num%=100;
+            
+            minCount += num/50;
+            num%=50;
+            
+            minCount += num/10;
+            num%=10;
+            
+            minCount += num/5;
+            num%=5;
+            
+            minCount += num/2;
+            num%=2;
+            
+            minCount += num/1;
+            num%=1;
+        }while(num!=0);
+        System.out.println(minCount);
+    }
+}
