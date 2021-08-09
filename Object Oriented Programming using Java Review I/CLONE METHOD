@@ -1,0 +1,87 @@
+Main.java
+import java.util.*;
+class Main{
+  public static void main(String args[]){
+      Scanner sc=new Scanner(System.in);
+      Complaint c[]=new Complaint[100];
+      int idx=0;
+      while(true){
+          String id,complaint,t,contry;
+          System.out.println("Enter the customer name");
+          String name=sc.nextLine();
+          if(name.length()==0){
+              System.out.println("Same customer");
+              
+              System.out.println("Enter the complaint");
+              complaint=sc.nextLine();
+              
+              c[idx]=new Complaint(c[idx-1].customer,complaint);
+          }
+          else{
+          System.out.println("Enter the id");
+          id=sc.nextLine();
+          
+          System.out.println("Enter the country");
+          String country=sc.nextLine();
+          
+          System.out.println("Enter the complaint");
+          complaint=sc.nextLine();
+          
+          
+          
+          Customer cust=new Customer(name,id,country);
+          
+          c[idx]=new Complaint(cust,complaint);
+          }
+          System.out.println("Add another complaint??");
+          t=sc.nextLine();
+          
+          if(t.equals("no")){
+              break;
+          }
+          
+          idx++;
+          
+      }
+      
+      System.out.println("\nComplaint Details");
+      for(int i=0;i<=idx;i++){
+          System.out.println(c[i]);
+      }
+      
+      
+  }
+
+}
+Complaint.java
+class Customer{
+    
+    String name,id,contry;
+    
+    Customer(String name,String id,String contry){
+        this.name=name;
+        this.id=id;
+        this.contry=contry;
+        
+    }
+    
+    public String toString(){
+        return ("Name : "+name+" ID : "+id+" Country : "+contry);
+    }
+
+}
+Costumer.java
+class Complaint{
+    Customer customer;
+    String complaint;
+    
+    Complaint(Customer customer,String complaint){
+        this.customer =customer;
+        this.complaint =complaint;
+        
+    }
+    
+    public String toString(){
+        return customer+" Complaint : "+complaint;
+    }
+}
