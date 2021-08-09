@@ -1,0 +1,98 @@
+Main.java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+public class Main {
+    static BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+    public static void main(String []args) throws IOException
+    {
+		String name = null,street = null,city = null;
+		int pincode = 0,i=0,n;
+		boolean result = false ;
+		Customer []data = new Customer[100];
+        System.out.println("Enter number of customers");
+        n = Integer.parseInt(br.readLine());
+		for(i=0;i<n;i++){
+			System.out.println("Enter the Customer Details "+(i+1));
+			System.out.println("Enter the name");
+			name = br.readLine();
+			System.out.println("Enter the Address Details");
+			System.out.println("Enter the street");
+			street = br.readLine();
+			System.out.println("Enter the city");
+			city = br.readLine();
+			System.out.println("Enter the pincode");
+			pincode = Integer.parseInt(br.readLine());
+			data[i] = new Customer(name,new Address(street,city,pincode));
+		}
+        
+        String ans="";
+		for(int j=0;j<n;j++){
+			for(int k=0;k<n && k!=j;k++){
+				result |= data[j].equals(data[k]);
+				if(result){
+                    ans+=data[j]+"\n";
+                    k=i+1;j=i+1;
+					break;
+				}
+			}
+		}
+		if(result){
+    	System.out.println("\nThe identical Customer Details are");
+        System.out.println(ans);   
+		}
+		else
+		System.out.println("\nNo duplicate details");
+	}
+}
+
+Address.java
+class Address
+{
+    String street,city;
+    int pincode;
+    Address(String street,String city,int pincode)
+    {
+        this.street=street;
+        this.city=city;
+        this.pincode=pincode;
+        
+    }
+     public boolean equals(Address obj){
+if(this.street.equals(obj.street) && this.city.equals(obj.city) && this.pincode==obj.pincode){
+        return true;
+} 
+      
+      return false;
+  }
+}
+Customer.java
+class Customer{
+    static int ct=0;
+    String name;
+    Address add;
+    
+    Customer(String name,Address add){
+        this.name=name;
+        this.add=add;
+    }
+    
+    public boolean equals(Customer obj){
+        if(this.name.equals(obj.name) && this.add.equals(obj.add)){
+            ct++;
+            
+            return true;
+        }
+        
+        return false;
+        
+    }
+    
+    public String toString(){
+        return ct+")Name:"+this.name+"\nAddress:"+this.add.street+","+add.city+"-"+add.pincode;
+        
+    }
+    
+}
