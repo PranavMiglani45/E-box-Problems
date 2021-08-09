@@ -1,0 +1,59 @@
+Main.java
+import java.util.*;
+class Main{
+   public static void main(String args[]){
+      Scanner sc=new Scanner(System.in);
+      System.out.println("Enter the name");
+      String name=sc.nextLine();
+      System.out.println("Enter the Address Details");
+      System.out.println("Enter the street");
+      String add=sc.nextLine();
+      System.out.println("Enter the city");
+      String city=sc.nextLine();
+      System.out.println("Enter the pincode");
+      int pin=sc.nextInt();
+      Address address=new Address(add,city,pin);
+      
+      Customer c=new Customer(name,address);
+      System.out.println(c);
+   }
+
+}
+Address.java
+class Address{
+     String street,city;
+     int pin;
+     
+     Address(){
+         
+     }
+     
+     Address(String street,String city,int pin){
+         this.street=street;
+         this.city=city;
+         this.pin=pin;
+     }
+     
+     public String toString(){
+         return street+","+city+"-"+pin;
+     }
+
+}
+Customer.java
+class Customer{
+    Address address;
+    String name;
+    Customer(){
+        
+    }
+    
+    Customer(String name,Address address){
+        this.name=name;
+        this.address=address;
+    }
+    
+    
+    public String toString(){
+        return name+" "+address.toString();
+    }
+}
